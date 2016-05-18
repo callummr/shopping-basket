@@ -1,3 +1,14 @@
-import React from 'react'
+import React, { Component } from 'react'
+import Basket from './basket'
+import Products from './products'
 
-export default () => <h1>It works!</h1>
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <Products />
+        <Basket />
+      </div>
+    )
+  }
+}
