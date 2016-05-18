@@ -60,7 +60,7 @@ const calculateTotal = props => {
     total += price * quantities[id]
   })
 
-  return total
+  return total.toFixed(2)
 }
 
 const mapStateToProps = state => ({ basket: state.basket, products: state.products })

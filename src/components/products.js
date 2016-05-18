@@ -25,7 +25,7 @@ class Product extends Component {
       <article className="product_summary">
         <img className="product_image" src={`images/${p.image}`} alt={p.name} />
         <h1 className="product_title">{p.name}</h1>
-        <span className="product_price">£{p.price}</span>
+        <span className="product_price">£{p.price.toFixed(2)}</span>
         <a className="add_to_basket"
            href="#"
            onClick={() => this.props.onAddToBasket(p.id)}>
