@@ -2,7 +2,7 @@ const defaultProducts = [{
   id: 1,
   name: 'Personalised cufflinks',
   price: 45.00,
-  image: 'cufflinks.png'
+  image: 'cufflinks.jpg'
 }, {
   id: 2,
   name: 'Kids\ T-shirt',

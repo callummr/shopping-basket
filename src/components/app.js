@@ -5,10 +5,10 @@ import Products from './products'
 export default class App extends Component {
   render() {
     return (
-      <div>
+      <section className="main">
         <Products />
         <Basket />
-      </div>
+      </section>
     )
   }
 }
