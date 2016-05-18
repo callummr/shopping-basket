@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add to Basket Test</title>
+
+    <meta charset="utf-8">
+
+    <link href="styles/reset.css" media="screen" rel="stylesheet" type="text/css">
+    <link href="styles/main.css" media="screen" rel="stylesheet" type="text/css">
+
+  </head>
+
+  <body>
+
+  <div class="app"></div>
+
+    <article class="test_instructions">
+      <h1>Add to Basket Test</h1>
+
+      <p>Using the components below, a customer should be able to add a product
+        to their basket.</p>
+
+      <p>Requirements:</p>
+
+      <ul>
+        <li>The basket total should be incremented by the price of the product
+          being added</li>
+        <li>The basket should show what products have been added</li>
+        <li>The basket should show the quantity of each product</li>
+        <li>The customer must be able to add a product to their basket multiple
+          times</li>
+        <li>The customer must be able to add a product to their basket in any
+          order</li>
+        <li>The solution should be flexible and well-structured so it can be
+          easily extended</li>
+        <li>Include a readme explaining the development decisions you made</li>
+      </ul>
+    </article>
+
+    <section class="main">
+      <section class="product_summary_collection">
+        <article class="product_summary" data-product-id="1" data-product-price="45.00">
+          <img class="product_image" src="images/cufflinks.jpg" alt="cufflinks" />
+          <h1 class="product_title">Personalised cufflinks</h1>
+          <span class="product_price">£45.00</span>
+          <a class="add_to_basket" href="/add-to-basket?product_id=1">Add to Basket</a>
+        </article>
+
+        <article class="product_summary" data-product-id="2" data-product-price="19.95">
+          <img class="product_image" src="images/tshirt.jpg" alt="kids t-shirt" />
+          <h1 class="product_title">Kids T-shirt</h1>
+          <span class="product_price">£19.95</span>
+          <a class="add_to_basket" href="/add-to-basket?product_id=2">Add to Basket</a>
+        </article>
+      </section>
+
+      <aside class="basket">
+        <h1>Basket</h1>
+
+        <table class="products">
+          <thead>
+            <tr>
+              <th>Product name</th>
+              <th>qty</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+
+        <div class="total">
+          <span class="label">Total: </span>
+          <span class="amount">£0.00</span>
+        </div>
+      </aside>
+    </section>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
