@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class Basket extends Component {
   render() {
-    console.log(this.props.basket)
     return (
       <aside className="basket">
         <h1>Basket</h1>
