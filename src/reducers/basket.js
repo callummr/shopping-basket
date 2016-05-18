@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import { ADD_TO_BASKET } from './actionTypes'
 
-const basketIds = (state = [], action) => {
+const basketIds = (state = [1, 2], action) => {
   switch (action.type) {
     case ADD_TO_BASKET:
       if (state.indexOf(action.id) > -1) {
@@ -14,7 +14,7 @@ const basketIds = (state = [], action) => {
   }
 }
 
-const basketQuantities = (state = {}, action) => {
+const basketQuantities = (state = {1: 10, 2: 30}, action) => {
   switch (action.type) {
     case ADD_TO_BASKET:
       const quantity = state[action.id] || 0

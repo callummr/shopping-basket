@@ -13,6 +13,6 @@ const defaultProducts = [{
 export default (state = defaultProducts, action) => {
   switch (action.type) {
     default:
-    return state
+      return state
   }
 }
