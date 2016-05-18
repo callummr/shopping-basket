@@ -1,5 +1,3 @@
-## Notonthehighstreet Frontend Technical Test
+# Shopping Basket
 
-### Instructions
-
-Opening the `index.html` file in a browser will show you a partially complete web page with further instructions inside.
+Contents coming soon

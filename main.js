@@ -69,7 +69,7 @@
 
 	var _app2 = _interopRequireDefault(_app);
 
-	var _reducers = __webpack_require__(192);
+	var _reducers = __webpack_require__(196);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -77,7 +77,7 @@
 
 	var app = _react2.default.createElement(
 	  _reactRedux.Provider,
-	  { store: (0, _redux.createStore)(_reducers2.default) },
+	  { store: (0, _redux.createStore)(_reducers2.default, {}, window.devToolsExtension ? window.devToolsExtension() : undefined) },
 	  _react2.default.createElement(_app2.default, null)
 	);
 
@@ -21720,21 +21720,61 @@
 
 /***/ },
 /* 191 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	exports.default = function () {
-	  return React.createElement(
-	    "h1",
-	    null,
-	    "It works!"
-	  );
-	};
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _basket = __webpack_require__(192);
+
+	var _basket2 = _interopRequireDefault(_basket);
+
+	var _products = __webpack_require__(193);
+
+	var _products2 = _interopRequireDefault(_products);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var App = function (_Component) {
+	  _inherits(App, _Component);
+
+	  function App() {
+	    _classCallCheck(this, App);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+	  }
+
+	  _createClass(App, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'main' },
+	        _react2.default.createElement(_products2.default, null),
+	        _react2.default.createElement(_basket2.default, null)
+	      );
+	    }
+	  }]);
+
+	  return App;
+	}(_react.Component);
+
+	exports.default = App;
 
 /***/ },
 /* 192 */
@@ -21746,17 +21786,401 @@
 	  value: true
 	});
 
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(169);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Basket = function (_Component) {
+	  _inherits(Basket, _Component);
+
+	  function Basket() {
+	    _classCallCheck(this, Basket);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Basket).apply(this, arguments));
+	  }
+
+	  _createClass(Basket, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'aside',
+	        { className: 'basket' },
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Basket'
+	        ),
+	        _react2.default.createElement(
+	          'table',
+	          { className: 'products' },
+	          _react2.default.createElement(
+	            'thead',
+	            null,
+	            _react2.default.createElement(
+	              'tr',
+	              null,
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'Product name'
+	              ),
+	              _react2.default.createElement(
+	                'th',
+	                null,
+	                'qty'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'tbody',
+	            null,
+	            this.props.basket.ids.map(function (id) {
+	              return renderBasketRow(id, _this2.props);
+	            })
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'total' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'label' },
+	            'Total: '
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'amount' },
+	            '£',
+	            calculateTotal(this.props)
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Basket;
+	}(_react.Component);
+
+	var renderBasketRow = function renderBasketRow(id, props) {
+	  var item = _extends({}, props.products.find(function (p) {
+	    return p.id === id;
+	  }), {
+	    quantity: props.basket.quantities[id]
+	  });
+
+	  return _react2.default.createElement(
+	    'tr',
+	    { key: id },
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      item.name
+	    ),
+	    _react2.default.createElement(
+	      'td',
+	      null,
+	      item.quantity
+	    )
+	  );
+	};
+
+	var calculateTotal = function calculateTotal(props) {
+	  var basket = props.basket;
+	  var products = props.products;
+	  var ids = basket.ids;
+	  var quantities = basket.quantities;
+
+	  var total = 0;
+
+	  ids.forEach(function (id) {
+	    var price = products.find(function (p) {
+	      return p.id === id;
+	    }).price;
+	    total += price * quantities[id];
+	  });
+
+	  return total.toFixed(2);
+	};
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return { basket: state.basket, products: state.products };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps)(Basket);
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(169);
+
+	var _actions = __webpack_require__(194);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Products = function (_Component) {
+	  _inherits(Products, _Component);
+
+	  function Products() {
+	    _classCallCheck(this, Products);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Products).apply(this, arguments));
+	  }
+
+	  _createClass(Products, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'product_summary_collection' },
+	        this.props.products.map(function (p) {
+	          return _react2.default.createElement(Product, { product: p, onAddToBasket: _this2.onAddToBasket.bind(_this2), key: p.id });
+	        })
+	      );
+	    }
+	  }, {
+	    key: 'onAddToBasket',
+	    value: function onAddToBasket(id) {
+	      this.props.addToBasket(id);
+	    }
+	  }]);
+
+	  return Products;
+	}(_react.Component);
+
+	var Product = function (_Component2) {
+	  _inherits(Product, _Component2);
+
+	  function Product() {
+	    _classCallCheck(this, Product);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Product).apply(this, arguments));
+	  }
+
+	  _createClass(Product, [{
+	    key: 'render',
+	    value: function render() {
+	      var _this4 = this;
+
+	      var p = this.props.product;
+
+	      return _react2.default.createElement(
+	        'article',
+	        { className: 'product_summary' },
+	        _react2.default.createElement('img', { className: 'product_image', src: 'images/' + p.image, alt: p.name }),
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'product_title' },
+	          p.name
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { className: 'product_price' },
+	          '£',
+	          p.price.toFixed(2)
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'add_to_basket',
+	            href: '#',
+	            onClick: function onClick() {
+	              return _this4.props.onAddToBasket(p.id);
+	            } },
+	          'Add to Basket'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Product;
+	}(_react.Component);
+
+	var mapStateToProps = function mapStateToProps(state) {
+	  return { products: state.products };
+	};
+
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, { addToBasket: _actions.addToBasket })(Products);
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.addToBasket = undefined;
+
+	var _actionTypes = __webpack_require__(195);
+
+	var addToBasket = exports.addToBasket = function addToBasket(id) {
+	  return {
+	    type: _actionTypes.ADD_TO_BASKET,
+	    id: id
+	  };
+	};
+
+/***/ },
+/* 195 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var ADD_TO_BASKET = exports.ADD_TO_BASKET = 'ADD_TO_BASKET';
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _redux = __webpack_require__(176);
 
-	var reducers = (0, _redux.combineReducers)({
-	  state: function state() {
-	    var _state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	var _products = __webpack_require__(197);
 
-	    return _state;
-	  }
+	var _products2 = _interopRequireDefault(_products);
+
+	var _basket = __webpack_require__(198);
+
+	var _basket2 = _interopRequireDefault(_basket);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var reducers = (0, _redux.combineReducers)({
+	  products: _products2.default,
+	  basket: _basket2.default
 	});
 
 	exports.default = reducers;
+
+/***/ },
+/* 197 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	var defaultProducts = [{
+	  id: 1,
+	  name: 'Personalised cufflinks',
+	  price: 45.00,
+	  image: 'cufflinks.jpg'
+	}, {
+	  id: 2,
+	  name: 'Kids\ T-shirt',
+	  price: 19.95,
+	  image: 'tshirt.jpg'
+	}];
+
+	exports.default = function () {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? defaultProducts : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    default:
+	      return state;
+	  }
+	};
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _redux = __webpack_require__(176);
+
+	var _actionTypes = __webpack_require__(195);
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+	var basketIds = function basketIds() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? [] : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _actionTypes.ADD_TO_BASKET:
+	      if (state.indexOf(action.id) === -1) {
+	        return [].concat(_toConsumableArray(state), [action.id]);
+	      } else {
+	        return state;
+	      }
+	    default:
+	      return state;
+	  }
+	};
+
+	var basketQuantities = function basketQuantities() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var action = arguments[1];
+
+	  switch (action.type) {
+	    case _actionTypes.ADD_TO_BASKET:
+	      var quantity = state[action.id] || 0;
+	      return Object.assign(_extends({}, state), _defineProperty({}, action.id, quantity + 1));
+	    default:
+	      return state;
+	  }
+	};
+
+	exports.default = (0, _redux.combineReducers)({
+	  ids: basketIds,
+	  quantities: basketQuantities
+	});
 
 /***/ }
 /******/ ]);
