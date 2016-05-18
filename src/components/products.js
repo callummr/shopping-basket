@@ -1,19 +1,20 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addToBasket } from '../actions'
 
 class Products extends Component {
   render() {
     return (
       <section className="product_summary_collection">
         {this.props.products.map(p => {
-          return <Product product={p} onAddToBasket={this.onAddToBasket} key={p.id} />
+          return <Product product={p} onAddToBasket={this.onAddToBasket.bind(this)} key={p.id} />
         })}
       </section>
     )
   }
 
   onAddToBasket(id) {
-    console.log(`Added ${id}`)
+    this.props.addToBasket(id)
   }
 }
 
@@ -38,4 +39,4 @@ class Product extends Component {
 
 const mapStateToProps = state => ({ products: state.products })
 
-export default connect(mapStateToProps)(Products)
+export default connect(mapStateToProps, { addToBasket })(Products)
